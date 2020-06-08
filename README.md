@@ -12,6 +12,10 @@ You can drag and drop `.bat` files onto `bat2exe.exe` or invoke via command line
 .\bat2exe.exe .\example.bat
 ```
 
+## Example
+
+![Drag and drop](/docs/drag-and-drop.gif)
+
 ## Download
 
 You can download releases [here](https://github.com/jamesmoriarty/gobat2exe/releases).
