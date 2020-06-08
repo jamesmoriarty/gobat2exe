@@ -1,5 +1,7 @@
 # GoBat2Exe
 
+![Continuous Integration](https://github.com/jamesmoriarty/gobat2exe/workflows/Continuous%20Integration/badge.svg)
+
 Convert Windows batch files into executable files.
 
 ## Usage
