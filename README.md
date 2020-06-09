@@ -22,7 +22,7 @@ You can download releases [here](https://github.com/jamesmoriarty/gobat2exe/rele
 
 ## Install
 
-You can install with Golang with:
+You can install with Golang:
 
 ```
 go get github.com/jamesmoriarty/gobat2exe
