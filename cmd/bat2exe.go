@@ -8,5 +8,11 @@ import (
 func main() {
 	batPath := os.Args[1]
 
-	gobat2exe.Bat2Exe(batPath)
+	err := gobat2exe.Bat2Exe(batPath)
+
+	if err != nil {
+		panic(err)
+	} else {
+		os.Exit(0)
+	}
 }

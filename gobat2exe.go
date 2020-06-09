@@ -12,7 +12,7 @@ import (
 func Bat2Exe(batPath string) error {
 	sedFile, err := ioutil.TempFile(os.TempDir(), "sed-")
 	if err != nil {
-		panic(err)
+		return err
 	}
 	log.Println("sedFile.Name", sedFile.Name())
 
@@ -21,7 +21,7 @@ func Bat2Exe(batPath string) error {
 
 	batDirectoryPath, err := filepath.Abs(filepath.Dir(batPath))
 	if err != nil {
-		panic(err)
+		return err
 	}
 	log.Println("batDirectoryPath", batDirectoryPath)
 
@@ -30,18 +30,18 @@ func Bat2Exe(batPath string) error {
 
 	text := []byte(sedFileContents)
 	if _, err = sedFile.Write(text); err != nil {
-		panic(err)
+		return err
 	}
 
 	if err := sedFile.Close(); err != nil {
-		panic(err)
+		return err
 	}
 
 	s := []string{"cmd.exe", "/C", "start", "iexpress", "/n", "/q", "/m", sedFile.Name()}
 	log.Println("cmd", s)
 	cmd := exec.Command(s[0], s[1:]...)
 	if err := cmd.Run(); err != nil {
-		panic(err)
+		return err
 	}
 
 	return nil
