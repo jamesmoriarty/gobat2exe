@@ -25,7 +25,7 @@ func Bat2Exe(batPath string) error {
 	}
 	log.Println("batDirectoryPath", batDirectoryPath)
 
-	sedFileContents := SEDFileContents(batName, batDirectoryPath)
+	sedFileContents := getSEDFileContents(batName, batDirectoryPath)
 	log.Println("sedFileContents", sedFileContents)
 
 	text := []byte(sedFileContents)
@@ -39,6 +39,7 @@ func Bat2Exe(batPath string) error {
 
 	s := []string{"cmd.exe", "/C", "start", "iexpress", "/n", "/q", "/m", sedFile.Name()}
 	log.Println("cmd", s)
+
 	cmd := exec.Command(s[0], s[1:]...)
 	if err := cmd.Run(); err != nil {
 		return err
@@ -47,8 +48,8 @@ func Bat2Exe(batPath string) error {
 	return nil
 }
 
-// SEDFileContents return string representation of Self Extraction Directive https://ss64.com/nt/iexpress-sed.html
-func SEDFileContents(batName string, batDirectoryPath string) string {
+// getSEDFileContents return string representation of Self Extraction Directive https://ss64.com/nt/iexpress-sed.html
+func getSEDFileContents(batName string, batDirectoryPath string) string {
 	return `
 		[Version]
 		Class=IEXPRESS
